@@ -1,9 +1,14 @@
+// Définition d'une adresse MAC
 typedef int8_t mac[6];
 
-void afficherMAC(mac adr)
+// Affiche l'adresse MAC (format : AA:BB:CC:DD:EE:FF)
+void afficherMAC(mac adr);
 
-mac lireMAC(char* ligne)
+// Affichage sans possibilite de modification grace a const
+mac lireMAC(const char* ligne);
 
+// Retourne une chaîne (char*) représentant l'adresse MAC (à libérer par l'appelant)
 char* ecrireMAC(mac adr)
 
-bool equals(mac, mac)s
+// Compare deux adresses MAC, retourne true si elles sont identiques
+bool equals(mac a, mac b)

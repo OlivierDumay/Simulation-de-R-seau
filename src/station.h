@@ -1,7 +1,7 @@
 struct station{
     mac adrMac;
     ip adrIp;
-}
+};
 
-getMac()
-getIP()
+mac getMac(struct station station);
+ip getIP(struct station station);
