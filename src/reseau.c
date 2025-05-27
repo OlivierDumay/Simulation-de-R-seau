@@ -20,7 +20,6 @@ uint8_t getNombreMachine(reseau* const r)
 
 uint8_t getNombreConnexion(reseau* const r)
 {
-    int i = 25;
     return r->nb_lien;
 }
 

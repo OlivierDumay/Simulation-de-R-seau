@@ -1,12 +1,9 @@
 #pragma once
-<<<<<<< HEAD
-=======
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
->>>>>>> 4c853fa18c3b39cf1883c76e7c468aa1cc3ab881
 
 #include "station.h"
 #include "switch.h"
@@ -36,10 +33,6 @@ typedef struct lien {
     machine_t machine_2;
 }lien;
 
-<<<<<<< HEAD
-int getNombreMachine(reseau r);
-int getNombreConnexion(reseau r);
-=======
 
 
 
@@ -73,4 +66,3 @@ bool existeLien (reseau* const r, lien l);
 void ajouterLien (reseau* const r, lien l);
 
 void initLien(machine_t m1, machine_t m2);
->>>>>>> 4c853fa18c3b39cf1883c76e7c468aa1cc3ab881
