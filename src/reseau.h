@@ -1,5 +1,4 @@
-#ifndef RESEAU_H
-#define RESEAU_H
+#pragma once
 
 #include "station.h"
 #include "switch.h"
@@ -28,5 +27,3 @@ typedef struct {
 
 int getNombreMachine(reseau r);
 int getNombreConnexion(reseau r);
-
-#endif // RESEAU_H

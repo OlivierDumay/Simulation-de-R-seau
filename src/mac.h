@@ -1,5 +1,4 @@
-#ifndef MAC_H
-#define MAC_H
+#pragma once
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -18,5 +17,3 @@ char* ecrireMAC(mac adr);
 
 // Compare deux adresses MAC, retourne true si elles sont identiques
 bool mac_equals(mac a, mac b);
-
-#endif // MAC_H
