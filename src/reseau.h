@@ -13,6 +13,8 @@ struct element_tabMachine{
     union machine donnee;
 };
 
+
+
 #define MAX_MACHINES 100
 
 struct reseau{

@@ -1,8 +1,8 @@
-struct tabCommutation{
+typedef struct {
     int index;
     mac adrMac;
     int port;
-};
+}tabCommutation;
 
 struct switch{
     mac adrMac;
@@ -12,6 +12,7 @@ struct switch{
 };
 
 creerConnexion(mac, port);
+afficherMAC(mac);
 supprimerConnexion(port);
 supprimerConnexion(mac);
 

@@ -5,7 +5,7 @@ typedef int8_t mac[6];
 void afficherMAC(mac adr);
 
 // Affichage sans possibilite de modification grace a const
-mac lireMAC(const char* ligne);
+mac lireMAC(char* adresse_mac);
 
 // Retourne une chaîne (char*) représentant l'adresse MAC (à libérer par l'appelant)
 char* ecrireMAC(mac adr)
