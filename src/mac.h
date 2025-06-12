@@ -2,20 +2,20 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "traduction.h"
 
 // Définition d'une adresse MAC
-typedef int8_t mac[6];
+typedef uint8_t mac[6];
 
-// Affiche l'adresse MAC (format : AA:BB:CC:DD:EE:FF)
-void afficherMAC(mac adr);
+// string vers mac, le retour est l'adresse du type mac static creer dans la fonction
+mac* lireMac(char* ligne);
 
-// Affichage sans possibilite de modification grace a const
-void lireMAC(const char* ligne);
 
-// Retourne une chaîne (char*) représentant l'adresse MAC (à libérer par l'appelant)
-char* ecrireMAC(mac adr); 
+// mac vers string, Stocke retour dans une chaîne (char*) en argument 
+void ecrireMac(mac adr, char ret[23]);
+
 
 // Compare deux adresses MAC, retourne true si elles sont identiques
-bool mac_equals(mac a, mac b);
+bool macEquals(mac a, mac b);

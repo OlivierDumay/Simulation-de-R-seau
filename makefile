@@ -1,19 +1,24 @@
+SRC_DIR = src
+OBJ_DIR = build
+
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
+
+EXEC = sae21
+
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -I./src
-SRC_DIR = src
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-OBJS = $(SRCS:.c=.o)
-TARGET = sae21
 
-all: $(TARGET)
+all: $(OBJ_DIR) $(EXEC)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(SRC_DIR)/*.o $(TARGET)
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
-.PHONY: all clean
+clean:
+	rm -rf $(OBJ_DIR) $(EXEC)

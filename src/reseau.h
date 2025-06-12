@@ -1,3 +1,4 @@
+
     #pragma once
 
 #include <stdio.h>
@@ -35,6 +36,8 @@ typedef struct lien {   // est-ce qu'il faut mettre le poids du lien en attribut
     machine_t machine_1;
     machine_t machine_2;
     uint8_t poids; // 4,19 ou 100
+    uint8_t machine_1_port;  // Ajout
+    uint8_t machine_2_port;  // Ajout
 }lien;
 
 // def reseau (graphe)
@@ -58,25 +61,23 @@ typedef struct reseau{
 
 }reseau;
 
-void initReseau(reseau* r);
-void deinitReseau(reseau* r);
-void affichageReseau(reseau* r);
+void initReseau(reseau* r); // initialise un réseau
+void deinitReseau(reseau* r); // free les malloc d'un réseau
+void affichageReseau(reseau* r); // affiche un réeau au format spécifique
+void remplirReseauAvecFichier (FILE* fichier, reseau* r); // remplis un reseau de machine et de lien, selon un fichier au format spécifique
 
-machine_t initMachineStation (station s); 
-machine_t initMachineSwitch (switch_t s);
-uint8_t getNombreMachine(reseau* const r);
-void ajouterMachine (reseau* const r, machine_t m);
-bool machineEquals (machine_t m1, machine_t m2);
-bool machineEqualsType (machine_t m1, machine_t m2);
+machine_t initMachineStation (station s); // initialise une machine de type station
+machine_t initMachineSwitch (switch_t s); // initialise une machine de type switch
+uint8_t getNombreMachine(reseau* const r);  // retourne le nombre de machine d'un réseau
+void ajouterMachine (reseau* const r, machine_t m); // ajoute une machine dans un réseau
+bool machineEquals (machine_t m1, machine_t m2); // compare deux machine
+bool machineEqualsType (machine_t m1, machine_t m2);    // compare le type de deux machine
+mac* getMac(machine_t m); // retourne l'addresse mac d'une machine
 
-lien initLien(machine_t m1, machine_t m2, uint8_t poids);
-uint8_t getNombreConnexion(reseau* const r);
-bool existeLien (reseau* const r, lien l);
-void ajouterLien (reseau* const r, lien l);
-bool lienEquals (lien l1, lien l2);
+lien initLien(machine_t m1, machine_t m2, uint8_t poids); // initialise un lien
+uint8_t getNombreConnexion(reseau* const r); // retourne le nombre de lien d'un reseau
+bool existeLien (reseau* const r, lien l); // cherche un lien dans un reseau, retourne vrai si il y est
+void ajouterLien (reseau* const r, lien l); // ajoute un lien dans un reseau, attention, ne verifie pas si les 2 machine du lien sont deja dans le réseau
+bool lienEquals (lien l1, lien l2); // compare deux liens
 
 
-/*Question prof:
--pour lienEquals, est ce que l'argment lien doit etre un lien*
-idem pour machineEquals et initMachine...
-*/

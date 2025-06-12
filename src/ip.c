@@ -1,45 +1,40 @@
 #include "ip.h"
 
-#include <string.h>
 
-// adresse contient maintenant {a, b, c, d}
-void lireIP(const char* ligne, ip adr)
+
+ip* lireIp(char* ligne) // string vers ip, le retour est l'adresse de l'ip static creer dans la fonction
 {
-    int a, b, c, d;
-    sscanf(ligne, "%d.%d.%d.%d", &a, &b, &c, &d);
-    adr[0] = a;
-    adr[1] = b;
-    adr[2] = c;
-    adr[3] = d;
+    static ip ret;
+    char* avant;
+    char* apres;
+    char* reste;
+    extraireChaine(ligne, '.', &avant, &apres);
+    ret[0] = atoi(avant);
+
+    reste = apres;
+    extraireChaine(reste, '.', &avant, &apres);
+    ret[1] = atoi(avant);
+
+    reste = apres;
+    extraireChaine(reste, '.', &avant, &apres);
+    ret[2] = atoi(avant);
+
+    ret[3] = atoi(apres);
+
+
+    return &ret;
 }
 
-char* ecrireIP(ip adr)
+void ecrireIp(ip adr, char ret[20]) // ip vers string
 {
-    char* ret;
-
-    strcat(ret, adr[0]);
-    strcat(ret, ";");
-    strcat(ret, adr[1]);
-    strcat(ret, ";");
-    strcat(ret, adr[2]);
-    strcat(ret, ";");
-    strcat(ret, adr[3]);
-    strcat(ret, ";");
-
-    return ret;
+    sprintf(ret, "%u.%u.%u.%u", adr[0], adr[1], adr[2], adr[3]);
 }
 
 bool ip_equals(ip a, ip b)
 {
-    for (int i = 0; i < 4; ++i) {
-        if (a[i] != b[i]) {
-            return false;
+    for (int i = 0; i < 4; i++)
+        {
+            if (a[i] != b[i]) {return false;}       
         }
-    }
-    return true;
-}
-
-void afficherIP(ip adr)
-{
-    printf("%d.%d.%d.%d", adr[0], adr[1], adr[2], adr[3]);
+        return true;
 }

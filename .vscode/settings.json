@@ -5,6 +5,12 @@
         "ip.h": "c",
         "stdio.h": "c",
         "string.h": "c",
-        "reseau.h": "c"
+        "reseau.h": "c",
+        "stdint.h": "c",
+        "test.h": "c",
+        "traduction.h": "c",
+        "fichierconfiguration.h": "c",
+        "switch.h": "c",
+        "stdbool.h": "c"
     }
 }
